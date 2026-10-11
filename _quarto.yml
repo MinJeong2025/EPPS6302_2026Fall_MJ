@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "GISC 6302 - Fall 2026"
+  title: "EPPS 6302 - Fall 2026"
   navbar:
     left:
       - href: index.qmd
@@ -13,7 +13,9 @@ website:
           - href: assign02.qmd
             text: Assignment 2
           - href: assign03.qmd
-            text: Assignment 3            
+            text: Assignment 3
+          - href: assign04.qmd
+            text: Assignment 4
 
 format:
   html:
