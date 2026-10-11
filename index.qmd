@@ -1,5 +1,5 @@
 ---
-title: "GISC 6302 Course Assignments"
+title: "EPPS 6302 Course Assignments"
 subtitle: "Fall 2026"
 author: "Min Jeong"
 ---
