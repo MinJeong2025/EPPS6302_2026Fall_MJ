@@ -1,0 +1,254 @@
+---
+title: "Assignment - Min Jeong"
+---
+```{r setup, include=FALSE}
+
+library(rvest)
+library(dplyr)
+library(stringr)
+library(readr)
+library(lubridate)
+library(WDI)
+
+options(tigris_use_cache = TRUE)
+```
+
+## 0. Checking Web Scraping Permissions
+
+```{r}
+robotstxt::paths_allowed("https://en.wikipedia.org/wiki/List_of_countries_by_foreign-exchange_reserves")
+```
+
+## 1. Books to Scrape
+
+```{r}
+books <- lapply(1:5, function(i) {
+
+  books_pg <- read_html(paste0("https://books.toscrape.com/catalogue/page-", i, ".html"))
+
+  tibble(title = books_pg |>
+        html_elements("article.product_pod h3 a") |>
+        html_attr("title"),
+
+        price = books_pg |>
+        html_elements("article.product_pod p.price_color") |>
+        html_text2(),
+
+        rating = books_pg |>
+        html_elements("article.product_pod p.star-rating") |>
+        html_attr("class") |>
+        str_remove("star-rating ")) |>
+    
+    mutate(price_gbp = parse_number(price))})
+
+books <- bind_rows(books)
+
+head(books)
+dim(books)
+```
+
+
+## 2. Wikipedia Web Scraping
+
+### 2.1 Foreign Exchange Reserves
+
+```{r}
+wiki_url <- paste0("https://en.wikipedia.org/wiki/", "List_of_countries_by_foreign-exchange_reserves")
+
+wiki_pg <- read_html(wiki_url)
+
+tabs <- wiki_pg |> html_elements("table.wikitable")
+
+length(tabs)
+tabs |> html_table() |> lapply(\(x) dim(x))
+
+reserves_raw <- tabs[[1]] |> html_table()
+
+glimpse(reserves_raw)
+```
+
+
+### 2.2 Cleaning the Reserves Table
+
+```{r}
+reserves <- reserves_raw |>
+  janitor::clean_names() |>
+  mutate(across(where(is.character),
+                ~ .x |>
+                  str_remove_all("\\[.*?\\]") |>
+                  str_squish())) |>
+  slice(-c(1, 2)) |>
+  filter(!str_detect(
+    country_as_recognized_by_the_un,
+    regex("total|world", ignore_case = TRUE)
+  )) |>
+  rename(
+    country = country_as_recognized_by_the_un,
+    reserves_gold = foreign_exchange_reserves,
+    change_gold = foreign_exchange_reserves_2,
+    reserves_no_gold = foreign_exchange_reserves_3,
+    change_no_gold = foreign_exchange_reserves_4,
+    date = last_reporteddate
+  ) |>
+  mutate(
+    reserves_gold = if_else(
+      str_detect(reserves_gold, regex("n/a", ignore_case = TRUE)),
+      NA_character_,
+      reserves_gold
+    ),
+    reserves_no_gold = if_else(
+      str_detect(reserves_no_gold, regex("n/a", ignore_case = TRUE)),
+      NA_character_,
+      reserves_no_gold
+    ),
+    date = lubridate::dmy(date, quiet = TRUE),
+    reserves_gold = parse_number(reserves_gold),
+    reserves_no_gold = parse_number(reserves_no_gold)
+  ) |>
+  select(-ref)
+
+glimpse(reserves)
+head(reserves)
+```
+
+
+### 2.3 Population Table and Cleaning
+
+```{r}
+pop_url <- paste0(
+  "https://en.wikipedia.org/wiki/",
+  "List_of_countries_and_dependencies_by_population"
+)
+
+pop_pg <- read_html(pop_url)
+
+pop_tabs <- pop_pg |>
+  html_elements("table.wikitable")
+
+length(pop_tabs)
+
+pop_tabs |>
+  html_table() |>
+  lapply(\(x) dim(x))
+
+pop_raw <- pop_tabs[[1]] |>
+  html_table()
+
+glimpse(pop_raw)
+
+pop <- pop_raw |>
+  janitor::clean_names() |>
+  mutate(across(where(is.character),
+                ~ .x |>
+                  str_remove_all("\\[.*?\\]") |>
+                  str_squish())) |>
+  filter(location != "World") |>
+  mutate(
+    population = parse_number(population),
+    percent_of_world = parse_number(percent_ofworld),
+    date = lubridate::dmy(date, quiet = TRUE)
+  ) |>
+  select(
+    location,
+    population,
+    percent_of_world,
+    date,
+    source_official_or_fromthe_united_nations
+  )
+
+glimpse(pop)
+head(pop)
+```
+
+When I changed the target from the foreign-exchange reserves table to the population table, the original cleaning code no longer worked because the new table had a different structure and different column names. The reserves page contained two `wikitable` elements and a multi-row header, whereas the population page contained one table with six columns and a single header row. I therefore modified the cleaning steps to match the new table structure and converted the population, percentage, and date variables to appropriate data types.
+
+
+## 3. World Bank API Comparison
+
+### 3.1 Retrieving Data from the API
+
+```{r}
+reserves_api <- WDI(
+  indicator = "FI.RES.TOTL.CD",
+  start = 2015,
+  end = 2024,
+  extra = TRUE
+)
+
+glimpse(reserves_api)
+head(reserves_api)
+```
+
+### 3.2 Comparing Wikipedia and World Bank Data
+
+```{r}
+wdi_2024 <- reserves_api |>
+  filter(year == 2024, !is.na(FI.RES.TOTL.CD)) |>
+  transmute(
+    country,
+    wdi_reserves = FI.RES.TOTL.CD / 1e6,
+    wdi_year = year,
+    lastupdated
+  )
+
+comparison <- reserves |>
+  select(
+    country,
+    wiki_reserves = reserves_gold,
+    wiki_date = date
+  ) |>
+  inner_join(wdi_2024, by = "country") |>
+  mutate(
+    difference = wiki_reserves - wdi_reserves,
+    percent_difference = difference / wdi_reserves * 100
+  ) |>
+  arrange(desc(abs(difference)))
+
+glimpse(comparison)
+
+comparison |>
+  select(
+    country,
+    wiki_reserves,
+    wiki_date,
+    wdi_reserves,
+    wdi_year,
+    difference,
+    percent_difference
+  ) |>
+  head(10)
+
+anti_join(
+  reserves |> select(country),
+  wdi_2024 |> select(country),
+  by = "country"
+) |>
+  head(20)
+```
+The Wikipedia and World Bank reserve values differ for several countries. For example, China reports about `$3.855` trillion on Wikipedia compared with `$3.456` trillion from the World Bank, while India reports about `$786` billion compared with $643 billion. One major reason is that the two sources represent different data vintages: the World Bank comparison uses 2024 observations, while Wikipedia reports country-specific dates, with many observations from 2025 or 2026. Differences may also reflect differences in reporting definitions and source updates.
+
+### 3.3 When Is Web Scraping Appropriate?
+
+Web scraping is appropriate when the required data are available on a public webpage but cannot be obtained through an accessible API or downloadable dataset. When a reliable API is available, it is generally preferable because it provides structured data and reduces problems caused by changes in webpage structure.
+
+## 4. Data Plan: Employment Data
+
+### 4.1 Data Source and Research Purpose
+
+For my research on county-to-county commuting flows in Texas, I plan to use employment data from the U.S. Census Bureau's County Business Patterns (CBP). County-level employment counts can represent job opportunities at commuting destinations. I would collect data for 2013 and 2020 to align with my commuting datasets. The official source provides geographic identifiers and annual employment statistics that can be linked to county-level commuting data.
+
+### 4.2 Robots.txt and Terms of Service
+
+Before accessing the data, I would review the Census Bureau website's robots.txt file and applicable terms of service or API usage guidance. I would check whether the intended access path is permitted and follow any stated restrictions. Because an official API is available, I would use that interface rather than automatically scraping HTML pages. The exact permissions and current conditions should be verified before collection.
+
+### 4.3 API Availability
+
+The Census Bureau provides an API for County Business Patterns. I would request the employment variable and county geographic identifiers for Texas separately for each study year. Using the official API is preferable to scraping a webpage because the response is structured and the variables and geographic coverage can be specified. I would check the documentation for the correct year-specific endpoint and any API-key requirements before requesting data.
+
+### 4.4 Data Volume, Rate Limiting, and Caching
+
+The initial collection would cover Texas's 254 counties in two years, or approximately 508 county-year records if every county is reported in both years. I would request only the variables and years needed, avoid repeated calls, and respect any documented usage limits. I would save the downloaded data locally in CSV or RDS format so that subsequent analysis can use cached copies rather than repeatedly contacting the API.
+
+### 4.5 Detecting Changes in Data Structure
+
+Changes to variable names, API endpoints, or response formats could interrupt data collection. I would check that the expected columns and county identifiers exist, inspect missing values and duplicate county-year combinations, and compare the number of returned records with expected coverage. If these checks fail, I would review the API documentation and revise the data retrieval code before analysis.
