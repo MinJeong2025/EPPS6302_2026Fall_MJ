@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - govinfo.csv
+
+website:
+  title: "EPPS 6302 - Fall 2026"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - text: Assignments
+        menu:
+          - href: assign02.qmd
+            text: Assignment 2
+          - href: assign03.qmd
+            text: Assignment 3  
+          - href: assign04.qmd
+            text: Assignment 4           
+          - href: assign05.qmd
+            text: Assignment 5   
+format:
+  html:
+    theme: cosmo
+    toc: true
+
+editor: visual
