@@ -1,0 +1,422 @@
+---
+title: "Assignment 6 - Min Jeong"
+subtitle: "EPPS 6302"
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(quanteda)
+library(quanteda.textstats)
+library(quanteda.textplots)
+library(quanteda.textmodels)
+library(tidyverse)
+library(stringr)
+library(jsonlite)
+library(readr)
+library(dplyr)
+library(rvest)
+```
+
+## Part 1. The public 
+
+```{r test-api}
+summit <- read_csv("https://raw.githubusercontent.com/datageneration/datamethods/master/textanalytics/summit_11162021.csv")
+
+sum_twt <- summit$text
+
+word_toks <- tokens(
+  sum_twt, remove_punct = TRUE, remove_url = TRUE) |>
+  tokens_tolower() |>
+  tokens_remove(pattern = c(stopwords("en"), "amp", "#*", "@*"), valuetype = "glob")
+
+word_dfm <- dfm(word_toks)
+topfeatures(word_dfm, 20)
+
+top_words <- topfeatures(word_dfm, 15)
+
+top_words_df <- data.frame(
+  word = names(top_words),
+  frequency = as.numeric(top_words)
+)
+
+ggplot(top_words_df, aes(x = reorder(word, frequency), y = frequency)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  labs(title = "Most Frequent Words in Biden-Xi Summit Tweets", x = "Words", y = "Frequency") +
+  theme_minimal()
+```
+
+
+
+The most frequent words in the summit tweets were "Biden," "Xi," "summit," and "virtual," reflecting the main focus of the collected tweets. Terms such as "Taiwan" and "tensions" also appeared frequently, suggesting that discussions extended beyond the meeting itself to broader issues in US–China relations. However, because the tweets were collected using specific keywords, these frequencies may partly reflect the data collection process. 
+
+
+```{r}
+tweet_dfm <- dfm(tokens(sum_twt, remove_punct = TRUE))
+
+
+tag_dfm <- dfm_select(tweet_dfm, pattern = "#*")
+
+toptag <- names(topfeatures(tag_dfm, 50))
+
+head(toptag, 10)
+
+tag_fcm <- fcm(tag_dfm)
+
+head(tag_fcm)
+
+topgat_fcm <- fcm_select(tag_fcm, pattern = toptag)
+
+textplot_network(
+  topgat_fcm,
+  min_freq = 50,
+  edge_alpha = 0.8,
+  edge_size = 1)
+
+```
+
+The hashtag network shows a central cluster around #biden, #china, and #america, with additional connections to #coronavirus and #fentanyl. A separate cluster involving #uyghurs, #tibetans, and #humanrights suggests that human rights issues were also discussed alongside the summit. These connections reflect hashtag co-occurrence rather than causal relationships or public opinion.
+
+
+```{r}
+user_dfm <- dfm_select(tweet_dfm, pattern = "@*")
+topuser <- names(topfeatures(user_dfm, 50))
+head(topuser, 20)
+
+user_fcm <- fcm(user_dfm)
+head(user_fcm, 20)
+
+user_fcm <- fcm_select(user_fcm, pattern = topuser)
+textplot_network(user_fcm, min_freq = 5, edge_color = "firebrick", edge_alpha = 0.8, edge_size = 1)
+```
+
+The mention network shows several disconnected groups, including political accounts, journalists, and sports-related accounts. Unlike the hashtag network, which is more interconnected, mentions tend to occur within smaller groups. This suggests that different sets of accounts were mentioned together in the summit-related tweets.
+
+## LSA (Latent Semantic Analysis)
+```{r}
+keep <- !duplicated(summit$text)
+unique_dfm <- word_dfm[keep, ]
+unique_dfm <- dfm_trim( unique_dfm, min_docfreq = 10)
+lsa_unique <- textmodel_lsa(unique_dfm, nd = 4, margin = "both")
+
+summary(lsa_unique)
+
+for (i in 1:4) {
+  cat("\nDimension", i, "\n")
+
+  scores <- lsa_unique$features[, i]
+
+  cat("Positive:\n")
+  print(head(sort(scores, decreasing = TRUE), 10))
+
+  cat("Negative:\n")
+  print(head(sort(scores, decreasing = FALSE), 10))
+}
+```
+
+The summit tweets mainly focused on Biden, Xi, and the virtual meeting. The hashtag network highlighted issues such as human rights, while the mention network showed separate groups of accounts.
+
+LSA results changed after removing duplicate tweets (62.4% of the data). Terms such as "Russia" and "Ukraine" became less prominent, while "Taiwan" and "tensions" became more visible. This suggests that repeated messages influenced the results, which may not represent overall public opinion.
+
+
+## Part 2. The Government 
+```{r}
+govfiles <- read_csv("govinfo6.csv", show_col_types = FALSE)
+
+url <- govfiles$htmlLink[1]
+page <- read_html(url)
+doc_text <- html_text2(html_element(page, "body"))
+cat(substr(doc_text, 1, 1000))
+
+
+get_doc_text <- function(url) {
+  tryCatch({
+    page <- read_html(url)
+    html_text2(html_element(page, "body"))
+  }, error = function(e) {
+    message("Failed: ", url)
+    NA_character_
+  })
+}
+
+#dir.create("../govinfo_private6", showWarnings = FALSE, #recursive = TRUE)
+
+#private_file <- "../govinfo_private6/cpd_texts.rds"
+
+#for (i in 1:nrow(govfiles)) {
+#  govfiles$text[i] <- get_doc_text(govfiles$htmlLink[i])
+
+#  if (i %% 25 == 0) {
+#    saveRDS(govfiles, private_file)
+#    message("Processed: ", i, "/", nrow(govfiles))
+#  }
+
+#  Sys.sleep(0.5)
+#}
+
+# saveRDS(govfiles, private_file)
+govfiles<- readRDS('../govinfo_private6/cpd_texts.rds')
+
+govfiles <- govfiles |>
+  filter(collection == "Compilation of Presidential Documents", !is.na(packageId))
+
+manifest <- govfiles |>
+  select(packageId, title, publishdate, htmlLink)
+
+write_csv(manifest, "../govinfo_private6/cpd_manifest6.csv")
+
+log <- data.frame(
+  source = "GovInfo CPD",
+  collection_date = "2026-11-02",
+  query = '"Xi Jinping" collection:cpd publishdate:range(2021-01-20,2026-11-01)',
+  documents = nrow(govfiles),
+  method = "GovInfo search export and HTML retrieval"
+)
+
+write_csv(log, "../govinfo_private6/cpd_log6.csv")
+
+nrow(govfiles)
+sum(!is.na(govfiles$text) & nzchar(govfiles$text))
+sum(is.na(govfiles$text) | !nzchar(govfiles$text))
+summary(nchar(govfiles$text))
+```
+
+
+```{r}
+valid <- !is.na(govfiles$text) &
+  nzchar(trimws(govfiles$text))
+
+table(valid)
+
+cpd <- govfiles[valid, ]
+cpd_corpus <- corpus(cpd, text_field = "text", docid_field = "packageId")
+cpd_tokens <- tokens(cpd_corpus,remove_punct = TRUE)
+summary(cpd_corpus, n = 5)
+
+xi_kwic <- kwic(cpd_tokens, pattern = phrase("Xi Jinping"), window = 12)
+
+head(xi_kwic, 15)
+nrow(xi_kwic)
+
+clean_cpd_body <- function(x) {
+
+  if (is.na(x) || !nzchar(trimws(x))) {
+    return(NA_character_)}
+
+  lines <- strsplit(x, "\n", fixed = TRUE)[[1]]
+  nonblank <- which(nzchar(trimws(lines)))
+
+  if (length(nonblank) >= 4 &&
+      grepl("^Administration of",  
+            trimws(lines[nonblank[1]]))) 
+    {lines <- lines[-seq_len(nonblank[3])]}
+
+  x <- paste(lines, collapse = "\n")
+
+  x <- sub("(?ims)^\\s*(?:N\\s*O\\s*T\\s*E|Categories|Names|Subjects|DCPD Number)\\s*:.*$", "", x, perl = TRUE)
+
+  trimws(x)
+}
+
+cpd <- govfiles[!is.na(govfiles$text) & nzchar(trimws(govfiles$text)),]
+cpd$text_body <- vapply(cpd$text, clean_cpd_body,character(1))
+cat(substr(cpd$text_body[1], 1, 500))
+cpd_body_corpus <- corpus(cpd, text_field = "text_body", docid_field = "packageId")
+
+xi_kwic_body <- kwic(
+  tokens(cpd_body_corpus, remove_punct = TRUE),
+  pattern = phrase(c("Xi Jinping", "President Xi")),
+  window = 12)
+
+head(xi_kwic_body, 15)
+nrow(xi_kwic_body)
+```
+
+```{r}
+cpd$administration <- ifelse(
+  as.Date(cpd$publishdate) < as.Date("2025-01-20"), "Biden","Trump")
+
+table(cpd$administration)
+
+cpd_body_corpus <- corpus(cpd,text_field = "text_body", docid_field = "packageId")
+
+
+cpd_toks <- tokens(
+  cpd_body_corpus,
+  remove_punct = TRUE,
+  remove_numbers = TRUE,
+  remove_url = TRUE) |>
+  tokens_tolower() |>
+  tokens_remove(stopwords("en"))
+
+cpd_dfm <- dfm(cpd_toks)
+
+cpd_grouped <- dfm_group(cpd_dfm,groups = cpd$administration)
+
+cpd_grouped
+
+keyness_results <- textstat_keyness( cpd_grouped, target = "Biden")
+
+head(keyness_results, 15)
+tail(keyness_results, 15)
+
+textplot_keyness(keyness_results, n = 15, min_count = 20)
+```
+
+Keyness analysis showed differences between the two administrations. Biden-era documents featured more words related to official announcements and briefings, while Trump-era documents emphasized terms such as "tariffs" and more conversational expressions. However, these differences may partly reflect the types of documents collected rather than policy differences alone.
+
+### iii.Compare: what does each source let you say about the summit, and about US–China relations?
+
+Tweets reflect public discussions of the summit, including issues such as human rights and international tensions. They were produced by social media users and news accounts for online audiences. In contrast, presidential documents record official statements and remarks intended for the public and the press. While tweets show how the summit was discussed online, government documents provide insight into official US–China relations. However, neither source fully represents public opinion or diplomatic relations.
+
+## Part3. US presidential inaugural addresses
+```{r}
+data("data_corpus_inaugural", package = "quanteda")
+
+inaugural <- data_corpus_inaugural
+summary(inaugural, n = 5)
+
+inaugural_1945 <- corpus_subset(inaugural, Year >= 1945)
+ndoc(inaugural_1945)
+
+names(docvars(inaugural))
+tail(docvars(inaugural), 10)
+max(docvars(inaugural, "Year"))
+```
+
+```{r}
+inaugural_tokens <- tokens(inaugural_1945, remove_punct = TRUE)
+
+speech_length <- data.frame(
+  Year = docvars(inaugural_1945, "Year"),
+  President = docvars(inaugural_1945,"President"),
+  Party = docvars(inaugural_1945, "Party"),
+  Length = ntoken(inaugural_tokens))
+
+speech_length
+
+ggplot(speech_length, aes(x = Year, y = Length)) +
+  geom_line(color = "steelblue") +
+  geom_point(color = "steelblue", size = 2) +
+  labs(title = "Length of US Presidential Inaugural Addresses (1945–2025)",
+       x = "Year", y = "Number of Tokens") +
+  theme_minimal()
+```
+
+The length of inaugural addresses varied considerably over time, without a clear long-term trend. Roosevelt's 1945 address was the shortest (557 tokens), while Trump's 2025 address was the longest (2,913 tokens).
+
+
+```{r}
+lexdiv <- textstat_lexdiv(tokens_tolower(inaugural_tokens), measure = c("TTR", "MATTR"), MATTR_window = 100)
+
+lexdiv$Year <- docvars(inaugural_1945, "Year")
+lexdiv$President <- docvars(inaugural_1945, "President")
+
+lexdiv
+
+ggplot(lexdiv, aes(x = Year, y = MATTR)) +
+  geom_line(color = "steelblue") +
+  geom_point(color = "steelblue", size = 2) +
+  labs(title = "Lexical Diversity of Inaugural Addresses (1945–2025)",x = "Year", y = "MATTR") +
+  theme_minimal()
+```
+
+Lexical diversity varied across inaugural addresses without a clear long-term trend. Reagan's 1985 address had the highest MATTR (0.711), while Nixon's 1973 address had the lowest (0.640).
+
+```{r}
+readability <- textstat_readability(
+  inaugural_1945, measure = c("Flesch", "Flesch.Kincaid"))
+
+readability$Year <- docvars(inaugural_1945, "Year")
+readability$President <- docvars(inaugural_1945, "President")
+
+readability
+
+ggplot(readability, aes(x = Year, y = Flesch)) +
+  geom_line(color = "steelblue") +
+  geom_point(color = "steelblue", size = 2) +
+  labs(title = "Readability of Inaugural Addresses (1945–2025)", x = "Year", y = "Flesch Reading Ease") +
+  theme_minimal()
+```
+
+Readability varied across presidential inaugural addresses without a clear long-term trend. Biden's 2021 address had the highest Flesch Reading Ease score (73.2), while Truman's 1949 address had the lowest (48.8).
+
+
+```{r}
+inaugural_dfm <- inaugural_1945 |>
+  tokens(remove_punct = TRUE, remove_numbers = TRUE) |>
+  tokens_tolower() |>
+  tokens_remove(stopwords("en")) |>
+  dfm()
+
+cos_sim <- textstat_simil(inaugural_dfm, method = "cosine", margin = "documents")
+
+sim_matrix <- as.matrix(cos_sim)
+round(sim_matrix, 3)
+
+sim_matrix[lower.tri(sim_matrix, diag = TRUE)] <- NA
+
+which(sim_matrix == max(sim_matrix, na.rm = TRUE), arr.ind = TRUE)
+
+# Convert similarity matrix to data frame
+sim_df <- as.data.frame(as.table(as.matrix(cos_sim)))
+
+colnames(sim_df) <- c("Speech1", "Speech2", "Similarity")
+
+# Heatmap
+ggplot(sim_df, aes(x = Speech1, y = Speech2, fill = Similarity)) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  labs(title = "Cosine Similarity of Inaugural Addresses (1945–2025)",x = "Speech", y = "Speech") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+Cosine similarity showed varying degrees of similarity among inaugural addresses. Reagan's 1981 and 1985 speeches were the most similar, suggesting consistency in word usage across his two addresses.
+
+```{r}
+party_dfm <- dfm_group(inaugural_dfm,  groups = docvars(inaugural_1945, "Party"))
+
+party_dfm
+
+# Calculate keyness
+party_keyness <- textstat_keyness( party_dfm, target = "Democratic")
+
+head(party_keyness, 15)
+tail(party_keyness, 15)
+
+textplot_keyness(party_keyness, n = 15, min_count = 5)
+```
+
+Keyness analysis showed differences in word usage between parties. Democratic addresses featured words such as "democracy," "change," and "generation," while Republican addresses emphasized "freedom," "government," and "country." These differences may also reflect individual presidents and historical contexts.
+
+
+```{r}
+wf <- textmodel_wordfish(inaugural_dfm, dir = c(1, 21))
+
+summary(wf)
+
+textplot_scale1d(wf, groups = docvars(inaugural_1945, "Party"))
+
+wf_words <- data.frame(word = wf$features, beta = as.numeric(wf$beta))
+
+head(wf_words[order(wf_words$beta), ], 10)
+head(wf_words[order(-wf_words$beta), ], 10)
+```
+
+Wordfish assumes that word frequencies follow a Poisson distribution, with document positions estimated along a single latent dimension. The results appear to reflect changes in language over time rather than a clear partisan division. However, examining distinguishing words and comparing the estimates with external evidence would be necessary to validate this interpretation. The `dir` parameter fixes the direction of the dimension, since its sign is otherwise arbitrary.
+
+
+### CPD Data Note
+
+The documents were collected from GovInfo's Compilation of
+Presidential Documents using the keyword "Xi Jinping" from
+January 20, 2021, to November 1, 2026. The search returned
+352 documents. Only the collection log and metadata manifest
+are published, not the full documents or API key.
+
+- [CPD Collection Log]('cpd_log6.csv')
+- [CPD Manifest]('cpd_manifest6.csv')
