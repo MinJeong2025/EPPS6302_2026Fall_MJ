@@ -1,0 +1,2 @@
+source,collection_date,query,documents,method
+GovInfo CPD,2026-11-02,"""Xi Jinping"" collection:cpd publishdate:range(2021-01-20,2026-11-01)",352,GovInfo search export and HTML retrieval
