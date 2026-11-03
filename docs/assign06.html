@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Assignment 6 - Min Jeong – EPPS 6302 - Fall 2026</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">EPPS 6302 - Fall 2026</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="./assign02.html">
+ <span class="dropdown-text">Assignment 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assign03.html">
+ <span class="dropdown-text">Assignment 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assign04.html">
+ <span class="dropdown-text">Assignment 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assign05.html">
+ <span class="dropdown-text">Assignment 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assign06.html">
+ <span class="dropdown-text">Assignment 6</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#part-1.-the-public" id="toc-part-1.-the-public" class="nav-link active" data-scroll-target="#part-1.-the-public">Part 1. The public</a></li>
+  <li><a href="#lsa-latent-semantic-analysis" id="toc-lsa-latent-semantic-analysis" class="nav-link" data-scroll-target="#lsa-latent-semantic-analysis">LSA (Latent Semantic Analysis)</a></li>
+  <li><a href="#part-2.-the-government" id="toc-part-2.-the-government" class="nav-link" data-scroll-target="#part-2.-the-government">Part 2. The Government</a>
+  <ul class="collapse">
+  <li><a href="#iii.compare-what-does-each-source-let-you-say-about-the-summit-and-about-uschina-relations" id="toc-iii.compare-what-does-each-source-let-you-say-about-the-summit-and-about-uschina-relations" class="nav-link" data-scroll-target="#iii.compare-what-does-each-source-let-you-say-about-the-summit-and-about-uschina-relations">iii.Compare: what does each source let you say about the summit, and about US–China relations?</a></li>
+  </ul></li>
+  <li><a href="#part3.-us-presidential-inaugural-addresses" id="toc-part3.-us-presidential-inaugural-addresses" class="nav-link" data-scroll-target="#part3.-us-presidential-inaugural-addresses">Part3. US presidential inaugural addresses</a>
+  <ul class="collapse">
+  <li><a href="#cpd-data-note" id="toc-cpd-data-note" class="nav-link" data-scroll-target="#cpd-data-note">CPD Data Note</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Assignment 6 - Min Jeong</h1>
+<p class="subtitle lead">EPPS 6302</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textstats)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textplots)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textmodels)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="part-1.-the-public" class="level2">
+<h2 class="anchored" data-anchor-id="part-1.-the-public">Part 1. The public</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>summit <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/datageneration/datamethods/master/textanalytics/summit_11162021.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sum_twt <span class="ot">&lt;-</span> summit<span class="sc">$</span>text</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>word_toks <span class="ot">&lt;-</span> <span class="fu">tokens</span>(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  sum_twt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>, <span class="at">remove_url =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_tolower</span>() <span class="sc">|&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> <span class="fu">c</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>), <span class="st">"amp"</span>, <span class="st">"#*"</span>, <span class="st">"@*"</span>), <span class="at">valuetype =</span> <span class="st">"glob"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>word_dfm <span class="ot">&lt;-</span> <span class="fu">dfm</span>(word_toks)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">topfeatures</span>(word_dfm, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    biden        xi    summit   virtual president   jinping     china   chinese 
+    12338     12027     11167      7483      6148      4766      3011      2716 
+      joe    monday      hold        us    taiwan  biden-xi       u.s  tensions 
+     2598      2540      2301      2179      1578      1556      1493      1420 
+  china's       old    friend      said 
+     1330      1246      1196      1113 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>top_words <span class="ot">&lt;-</span> <span class="fu">topfeatures</span>(word_dfm, <span class="dv">15</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>top_words_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">word =</span> <span class="fu">names</span>(top_words),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">frequency =</span> <span class="fu">as.numeric</span>(top_words)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top_words_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(word, frequency), <span class="at">y =</span> frequency)) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Most Frequent Words in Biden-Xi Summit Tweets"</span>, <span class="at">x =</span> <span class="st">"Words"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assign06_files/figure-html/test-api-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The most frequent words in the summit tweets were “Biden,” “Xi,” “summit,” and “virtual,” reflecting the main focus of the collected tweets. Terms such as “Taiwan” and “tensions” also appeared frequently, suggesting that discussions extended beyond the meeting itself to broader issues in US–China relations. However, because the tweets were collected using specific keywords, these frequencies may partly reflect the data collection process.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tweet_dfm <span class="ot">&lt;-</span> <span class="fu">dfm</span>(<span class="fu">tokens</span>(sum_twt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>tag_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_select</span>(tweet_dfm, <span class="at">pattern =</span> <span class="st">"#*"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>toptag <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(tag_dfm, <span class="dv">50</span>))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(toptag, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "#china"       "#biden"       "#xijinping"   "#joebiden"    "#america"    
+ [6] "#americans"   "#coronavirus" "#fentanyl"    "#xi"          "#us"         </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tag_fcm <span class="ot">&lt;-</span> <span class="fu">fcm</span>(tag_dfm)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tag_fcm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fcm of 6 x 665 features (7,746 co-occurrences, 87.99% sparsity).
+               features
+features        #breaking #breakingnews #biden #china #usa #pray4america
+  #breaking             0             4      5      5    5             0
+  #breakingnews         0             0      4      5    4             0
+  #biden                0             0      0    443   49             0
+  #china                0             0      0      8   76             0
+  #usa                  0             0      0      0    6             0
+  #pray4america         0             0      0      0    0             0
+               features
+features        #joebiden #xijinping #america #americans
+  #breaking             0          0        0          0
+  #breakingnews         0          0        0          0
+  #biden              299        370      302        295
+  #china              339        434      308        295
+  #usa                 12         15        0          0
+  #pray4america         0          0        0          0
+[ reached max_nfeat ... 655 more features ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>topgat_fcm <span class="ot">&lt;-</span> <span class="fu">fcm_select</span>(tag_fcm, <span class="at">pattern =</span> toptag)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_network</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  topgat_fcm,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_freq =</span> <span class="dv">50</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge_alpha =</span> <span class="fl">0.8</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge_size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assign06_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The hashtag network shows a central cluster around #biden, #china, and #america, with additional connections to #coronavirus and #fentanyl. A separate cluster involving #uyghurs, #tibetans, and #humanrights suggests that human rights issues were also discussed alongside the summit. These connections reflect hashtag co-occurrence rather than causal relationships or public opinion.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>user_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_select</span>(tweet_dfm, <span class="at">pattern =</span> <span class="st">"@*"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>topuser <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(user_dfm, <span class="dv">50</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(topuser, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "@potus"           "@politico"        "@joebiden"        "@jendeben"       
+ [5] "@eneskanter"      "@nwadhams"        "@phelimkine"      "@nahaltoosi"     
+ [9] "@nba"             "@washwizards"     "@pelicansnba"     "@capitalonearena"
+[13] "@kevinliptakcnn"  "@foxbusiness"     "@morningsmaria"   "@scmpnews"       
+[17] "@petermartin_pcm" "@nytimes"         "@uyghur_american" "@kaylatausche"   </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>user_fcm <span class="ot">&lt;-</span> <span class="fu">fcm</span>(user_dfm)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(user_fcm, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fcm of 20 x 711 features (328 co-occurrences, 98.00% sparsity).
+                 features
+features          @youtube @bfmtv @cnn @lauhaim @barackobama @joebiden
+  @youtube               0      0    0        0            0         0
+  @bfmtv                 0      0    1        1            1         1
+  @cnn                   0      0    0        1            1         1
+  @lauhaim               0      0    0        0            1         1
+  @barackobama           0      0    0        0            0         1
+  @joebiden              0      0    0        0            0         3
+  @kamalaharris          0      0    0        0            0         0
+  @hillaryclinton        0      0    0        0            0         0
+  @billclinton           0      0    0        0            0         0
+  @cbsnews               0      0    0        0            0         0
+                 features
+features          @kamalaharris @hillaryclinton @billclinton @cbsnews
+  @youtube                    0               0            0        0
+  @bfmtv                      1               1            1        1
+  @cnn                        1               1            1        1
+  @lauhaim                    1               1            1        1
+  @barackobama                1               1            1        1
+  @joebiden                   1               1            1        1
+  @kamalaharris               0               1            1        1
+  @hillaryclinton             0               0            1        1
+  @billclinton                0               0            0        1
+  @cbsnews                    0               0            0        0
+[ reached max_nfeat ... 10 more features, reached max_nfeat ... 701 more
+features ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>user_fcm <span class="ot">&lt;-</span> <span class="fu">fcm_select</span>(user_fcm, <span class="at">pattern =</span> topuser)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_network</span>(user_fcm, <span class="at">min_freq =</span> <span class="dv">5</span>, <span class="at">edge_color =</span> <span class="st">"firebrick"</span>, <span class="at">edge_alpha =</span> <span class="fl">0.8</span>, <span class="at">edge_size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assign06_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The mention network shows several disconnected groups, including political accounts, journalists, and sports-related accounts. Unlike the hashtag network, which is more interconnected, mentions tend to occur within smaller groups. This suggests that different sets of accounts were mentioned together in the summit-related tweets.</p>
+</section>
+<section id="lsa-latent-semantic-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="lsa-latent-semantic-analysis">LSA (Latent Semantic Analysis)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>keep <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">duplicated</span>(summit<span class="sc">$</span>text)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>unique_dfm <span class="ot">&lt;-</span> word_dfm[keep, ]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>unique_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>( unique_dfm, <span class="at">min_docfreq =</span> <span class="dv">10</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>lsa_unique <span class="ot">&lt;-</span> <span class="fu">textmodel_lsa</span>(unique_dfm, <span class="at">nd =</span> <span class="dv">4</span>, <span class="at">margin =</span> <span class="st">"both"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lsa_unique)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                Length  Class     Mode   
+sk                    4 -none-    numeric
+docs              21844 -none-    numeric
+features           3372 -none-    numeric
+matrix_low_rank 4603623 -none-    numeric
+data            4603623 dgCMatrix S4     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Dimension"</span>, i, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  scores <span class="ot">&lt;-</span> lsa_unique<span class="sc">$</span>features[, i]</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Positive:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">head</span>(<span class="fu">sort</span>(scores, <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">10</span>))</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Negative:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">head</span>(<span class="fu">sort</span>(scores, <span class="at">decreasing =</span> <span class="cn">FALSE</span>), <span class="dv">10</span>))</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Dimension 1 
+Positive:
+    biden        xi    summit   virtual president   jinping    monday      hold 
+0.4726214 0.4612797 0.4412493 0.3419233 0.2431883 0.1993945 0.1409181 0.1362229 
+      joe     china 
+0.1290528 0.1120692 
+Negative:
+          不           时         举行         寻求           说           将 
+3.675452e-06 5.209772e-06 6.981376e-06 7.420048e-06 7.950904e-06 1.164587e-05 
+          对         白宫           美         美国 
+1.230182e-05 1.233834e-05 1.238878e-05 1.334144e-05 
+
+Dimension 2 
+Positive:
+    summit   biden-xi    virtual     monday     taiwan      china        set 
+0.48723909 0.34859825 0.29636208 0.15317581 0.14112924 0.12970124 0.12157494 
+  tensions      ahead    discuss 
+0.12039030 0.05881964 0.05723785 
+Negative:
+ president      biden         xi        old     friend      calls   insisted 
+-0.3383319 -0.2906182 -0.2642672 -0.1689795 -0.1653417 -0.1414793 -0.1346347 
+     close    jinping         us 
+-0.1328538 -0.1151811 -0.1057010 
+
+Dimension 3 
+Positive:
+ president         us    chinese   biden-xi    jinping      china        joe 
+0.62193908 0.31532291 0.26226011 0.18833053 0.18592104 0.16791489 0.15590211 
+    taiwan        u.s      ahead 
+0.14335903 0.08082432 0.06075615 
+Negative:
+      biden          xi        hold    china’s    us-china     prepare 
+-0.35244454 -0.32393664 -0.08343691 -0.03597083 -0.02709138 -0.02369668 
+    china's      summit cooperation           $ 
+-0.02077447 -0.02027135 -0.01908987 -0.01676328 
+
+Dimension 4 
+Positive:
+    china        us    taiwan       old    friend  biden-xi     calls       via 
+0.4355059 0.2891433 0.2404980 0.1783807 0.1721989 0.1645015 0.1422994 0.1358685 
+    close  insisted 
+0.1306541 0.1251249 
+Negative:
+    virtual      monday        hold     jinping   president     chinese 
+-0.29666713 -0.28172808 -0.23580484 -0.22296243 -0.18563331 -0.15139186 
+        joe    expected     evening         set 
+-0.10749812 -0.05283567 -0.04586866 -0.04221885 </code></pre>
+</div>
+</div>
+<p>The summit tweets mainly focused on Biden, Xi, and the virtual meeting. The hashtag network highlighted issues such as human rights, while the mention network showed separate groups of accounts.</p>
+<p>LSA results changed after removing duplicate tweets (62.4% of the data). Terms such as “Russia” and “Ukraine” became less prominent, while “Taiwan” and “tensions” became more visible. This suggests that repeated messages influenced the results, which may not represent overall public opinion.</p>
+</section>
+<section id="part-2.-the-government" class="level2">
+<h2 class="anchored" data-anchor-id="part-2.-the-government">Part 2. The Government</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>govfiles <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"govinfo6.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> govfiles<span class="sc">$</span>htmlLink[<span class="dv">1</span>]</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>doc_text <span class="ot">&lt;-</span> <span class="fu">html_text2</span>(<span class="fu">html_element</span>(page, <span class="st">"body"</span>))</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">substr</span>(doc_text, <span class="dv">1</span>, <span class="dv">1000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Administration of Donald J. Trump, 2026
+
+Remarks at a Welcoming Ceremony for President Xi Jinping of China
+
+September 24, 2026
+
+President Trump. Thank you very much. It's a great honor.
+
+President Xi, Madame Peng, and the members of the Chinese delegation: I am delighted to welcome you to the beautiful White House. Such a great honor.
+
+In May, we had the great privilege of visiting you in Beijing, where you received our delegation with spectacular and very beautiful hospitality. Now Melania and I are honored to host you in Washington as President Xi becomes the first-ever Chinese leader to make a second formal state visit to America.
+
+From the time of my first election in 2016, President Xi and I have forged a friendship—a truly great friendship, actually—built on mutual respect and the vital interests of our people.
+
+We have spent time together all over the world—from Germany to Argentina, Japan to South Korea, and Beijing to Palm Beach, Florida. But remarkably, this is our first time</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>get_doc_text <span class="ot">&lt;-</span> <span class="cf">function</span>(url) {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>({</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_text2</span>(<span class="fu">html_element</span>(page, <span class="st">"body"</span>))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  }, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"Failed: "</span>, url)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="cn">NA_character_</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co">#dir.create("../govinfo_private6", showWarnings = FALSE, #recursive = TRUE)</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co">#private_file &lt;- "../govinfo_private6/cpd_texts.rds"</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co">#for (i in 1:nrow(govfiles)) {</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co">#  govfiles$text[i] &lt;- get_doc_text(govfiles$htmlLink[i])</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="co">#  if (i %% 25 == 0) {</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="co">#    saveRDS(govfiles, private_file)</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="co">#    message("Processed: ", i, "/", nrow(govfiles))</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a><span class="co">#  }</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a><span class="co">#  Sys.sleep(0.5)</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a><span class="co">#}</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a><span class="co"># saveRDS(govfiles, private_file)</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>govfiles<span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'../govinfo_private6/cpd_texts.rds'</span>)</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>govfiles <span class="ot">&lt;-</span> govfiles <span class="sc">|&gt;</span></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(collection <span class="sc">==</span> <span class="st">"Compilation of Presidential Documents"</span>, <span class="sc">!</span><span class="fu">is.na</span>(packageId))</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>manifest <span class="ot">&lt;-</span> govfiles <span class="sc">|&gt;</span></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(packageId, title, publishdate, htmlLink)</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(manifest, <span class="st">"../govinfo_private6/cpd_manifest6.csv"</span>)</span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>log <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">source =</span> <span class="st">"GovInfo CPD"</span>,</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">collection_date =</span> <span class="st">"2026-11-02"</span>,</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">query =</span> <span class="st">'"Xi Jinping" collection:cpd publishdate:range(2021-01-20,2026-11-01)'</span>,</span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">documents =</span> <span class="fu">nrow</span>(govfiles),</span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"GovInfo search export and HTML retrieval"</span></span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(log, <span class="st">"../govinfo_private6/cpd_log6.csv"</span>)</span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(govfiles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 352</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(govfiles<span class="sc">$</span>text) <span class="sc">&amp;</span> <span class="fu">nzchar</span>(govfiles<span class="sc">$</span>text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 352</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(govfiles<span class="sc">$</span>text) <span class="sc">|</span> <span class="sc">!</span><span class="fu">nzchar</span>(govfiles<span class="sc">$</span>text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">nchar</span>(govfiles<span class="sc">$</span>text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1591   13370   25899   38119   45123  505971 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>valid <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(govfiles<span class="sc">$</span>text) <span class="sc">&amp;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nzchar</span>(<span class="fu">trimws</span>(govfiles<span class="sc">$</span>text))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(valid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>valid
+TRUE 
+ 352 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>cpd <span class="ot">&lt;-</span> govfiles[valid, ]</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>cpd_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(cpd, <span class="at">text_field =</span> <span class="st">"text"</span>, <span class="at">docid_field =</span> <span class="st">"packageId"</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>cpd_tokens <span class="ot">&lt;-</span> <span class="fu">tokens</span>(cpd_corpus,<span class="at">remove_punct =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cpd_corpus, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>corpus of 352 documents, showing 5 documents:
+
+           Text Types Tokens Sentences index
+ DCPD-202600636   606   1695        89     1
+ DCPD-202500663   156    295        24     2
+ DCPD-202600342   306    785        74     3
+ DCPD-202600638   680   1927       108     4
+ DCPD-202501077   324    775        55     5
+                            collection granuleId
+ Compilation of Presidential Documents        NA
+ Compilation of Presidential Documents        NA
+ Compilation of Presidential Documents        NA
+ Compilation of Presidential Documents        NA
+ Compilation of Presidential Documents        NA
+                                                                                  title
+                      Remarks at a Welcoming Ceremony for President Xi Jinping of China
+ Statement on the President's Telephone Conversation With President Xi Jinping of China
+            Remarks Prior to a Tea With President Xi Jinping of China in Beijing, China
+                       Remarks at a State Dinner Honoring President Xi Jinping of China
+    Remarks Prior to a Meeting With President Xi Jinping of China in Busan, South Korea
+                                        detailsLink
+ https://www.govinfo.gov/app/details/DCPD-202600636
+ https://www.govinfo.gov/app/details/DCPD-202500663
+ https://www.govinfo.gov/app/details/DCPD-202600342
+ https://www.govinfo.gov/app/details/DCPD-202600638
+ https://www.govinfo.gov/app/details/DCPD-202501077
+                                                                   pdfLink
+ https://www.govinfo.gov/content/pkg/DCPD-202600636/pdf/DCPD-202600636.pdf
+ https://www.govinfo.gov/content/pkg/DCPD-202500663/pdf/DCPD-202500663.pdf
+ https://www.govinfo.gov/content/pkg/DCPD-202600342/pdf/DCPD-202600342.pdf
+ https://www.govinfo.gov/content/pkg/DCPD-202600638/pdf/DCPD-202600638.pdf
+ https://www.govinfo.gov/content/pkg/DCPD-202501077/pdf/DCPD-202501077.pdf
+  pdfSize
+ 239.5 KB
+ 225.3 KB
+ 244.7 KB
+ 243.8 KB
+ 232.8 KB
+                                                                   htmlLink
+ https://www.govinfo.gov/content/pkg/DCPD-202600636/html/DCPD-202600636.htm
+ https://www.govinfo.gov/content/pkg/DCPD-202500663/html/DCPD-202500663.htm
+ https://www.govinfo.gov/content/pkg/DCPD-202600342/html/DCPD-202600342.htm
+ https://www.govinfo.gov/content/pkg/DCPD-202600638/html/DCPD-202600638.htm
+ https://www.govinfo.gov/content/pkg/DCPD-202501077/html/DCPD-202501077.htm
+ htmlSize xmlLink xmlSize otherLink1 other1Size otherLink2 other2Size
+  14.3 KB      NA     0 B         NA        0 B         NA        0 B
+   3.4 KB      NA     0 B         NA        0 B         NA        0 B
+   7.6 KB      NA     0 B         NA        0 B         NA        0 B
+  15.3 KB      NA     0 B         NA        0 B         NA        0 B
+   7.4 KB      NA     0 B         NA        0 B         NA        0 B
+                                                                                                                                                                                                                                                                                                                                                          teaser
+  very much. It&amp;#39;s a great honor. President Xi, Madame Peng, and the members of the Chinese delegation: I am delighted to welcome you to the beautiful White House. Such a great honor. In May, we had the great privilege of visiting you in Beijing, where you received our delegation with spectacular and very beautiful hospitality. Now Melania and ...
+        concluded a very good phone call with President Xi, of China, discussing some of the intricacies of our recently made and agreed-to trade deal. The call lasted approximately 1½ hours and resulted in a very positive conclusion for both countries. There should no longer be any questions respecting the complexity of rare earth products. Our ...
+  today I am hosting the President and his officials in the Zhongnanhai compound for tea. This is the place where party and the central government leaders of China work and live, including myself. After the founding of the People&amp;#39;s Republic of China in 1949, the leadership have moved to this compound, including the Chinese leaders Mao Zedong, ...
+ very much. Please, sit. This is a great honor. President Xi, Madame Peng, and members of the Chinese delegation: Melania and I are delighted to welcome you once again to the White House. You are truly outstanding, amazing people. The hospitality of the Chinese people was on full display during my visit to Beijing earlier this year, and tonight we...
+       Trump. Well, thank you very much. It&amp;#39;s a great honor to be with a friend of mine, really, for a long time now, if you think about it, the very, very distinguished and respected President of China. And we will be having some discussions. I think we&amp;#39;ve already agreed to a lot of things, and we&amp;#39;ll agree to some more right now. But ...
+ historical publishdate
+         NA  2026-09-24
+         NA  2025-06-05
+         NA  2026-05-15
+         NA  2026-09-24
+         NA  2025-10-30</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>xi_kwic <span class="ot">&lt;-</span> <span class="fu">kwic</span>(cpd_tokens, <span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="st">"Xi Jinping"</span>), <span class="at">window =</span> <span class="dv">12</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(xi_kwic, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Keyword-in-context with 15 matches.
+                            
+     [DCPD-202600636, 14:15]
+   [DCPD-202600636, 602:603]
+ [DCPD-202600636, 1468:1469]
+     [DCPD-202500663, 15:16]
+   [DCPD-202500663, 196:197]
+   [DCPD-202500663, 215:216]
+     [DCPD-202600342, 14:15]
+   [DCPD-202600342, 625:626]
+     [DCPD-202600638, 14:15]
+ [DCPD-202600638, 1667:1668]
+     [DCPD-202501077, 14:15]
+   [DCPD-202501077, 644:645]
+     [DCPD-202600338, 14:15]
+   [DCPD-202600338, 782:783]
+     [DCPD-202600341, 14:15]
+                                                                                              
+                          of Donald J Trump 2026 Remarks at a Welcoming Ceremony for President
+                Announcer Ladies and gentlemen the President of the People's Republic of China
+          Officials China President Xi Locations Washington DC Names Peng Liyuan Trump Melania
+        Donald J Trump 2025 Statement on the President's Telephone Conversation With President
+            for your attention to this matter Categories Statements by the President President
+                       Names Bessent Scott K.H Greer Jamieson L Lutnick Howard W Trump Melania
+                                  of Donald J Trump 2026 Remarks Prior to a Tea With President
+  Foreign Leaders and International Officials China President Xi Locations Beijing China Names
+                           of Donald J Trump 2026 Remarks at a State Dinner Honoring President
+          Officials China President Xi Locations Washington DC Names Peng Liyuan Trump Melania
+                              of Donald J Trump 2025 Remarks Prior to a Meeting With President
+      Leaders and International Officials China President Xi Locations Busan South Korea Names
+                              of Donald J Trump 2026 Remarks Prior to a Meeting With President
+ Categories Meetings With Foreign Leaders and International Officials China President Xi Names
+                              of Donald J Trump 2026 Remarks at a State Banquet With President
+               
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+ | Xi Jinping |
+                                                                                                      
+ of China September 24 2026 President Trump Thank you very much It's                                  
+ President Xi Honorable President Donald J Trump and Mrs Melania Trump members                        
+ Subjects Artificial intelligence and other emerging technologies China President China relations with
+ of China June 5 2025 I just concluded a very good phone                                              
+ of China President's telephone conversation Names Bessent Scott K.H Greer Jamieson L                 
+ Subjects China President China trade with U.S Critical minerals supply chain improvements            
+ of China in Beijing China May 15 2026 President Xi Well today                                        
+ Subjects China President China President Trump's visit China relations with U.S China                
+ of China September 24 2026 President Trump Thank you very much Please                                
+ Subjects China President China relations with U.S DCPD Number DCPD202600638                          
+ of China in Busan South Korea October 30 2025 President Trump Well                                   
+ Subjects China President China relations with U.S South Korea President Trump's visit                
+ of China in Beijing China May 14 2026 President Xi Let me                                            
+ Subjects Beijing China President Trump’s visit China President China relations with U.S             
+ of China in Beijing China May 14 2026 President Xi Honorable President                               </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(xi_kwic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 734</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>clean_cpd_body <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(x) <span class="sc">||</span> <span class="sc">!</span><span class="fu">nzchar</span>(<span class="fu">trimws</span>(x))) {</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NA_character_</span>)}</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  lines <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(x, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">fixed =</span> <span class="cn">TRUE</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  nonblank <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">nzchar</span>(<span class="fu">trimws</span>(lines)))</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(nonblank) <span class="sc">&gt;=</span> <span class="dv">4</span> <span class="sc">&amp;&amp;</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">grepl</span>(<span class="st">"^Administration of"</span>,  </span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>            <span class="fu">trimws</span>(lines[nonblank[<span class="dv">1</span>]]))) </span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    {lines <span class="ot">&lt;-</span> lines[<span class="sc">-</span><span class="fu">seq_len</span>(nonblank[<span class="dv">3</span>])]}</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">paste</span>(lines, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"(?ims)^</span><span class="sc">\\</span><span class="st">s*(?:N</span><span class="sc">\\</span><span class="st">s*O</span><span class="sc">\\</span><span class="st">s*T</span><span class="sc">\\</span><span class="st">s*E|Categories|Names|Subjects|DCPD Number)</span><span class="sc">\\</span><span class="st">s*:.*$"</span>, <span class="st">""</span>, x, <span class="at">perl =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">trimws</span>(x)</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>cpd <span class="ot">&lt;-</span> govfiles[<span class="sc">!</span><span class="fu">is.na</span>(govfiles<span class="sc">$</span>text) <span class="sc">&amp;</span> <span class="fu">nzchar</span>(<span class="fu">trimws</span>(govfiles<span class="sc">$</span>text)),]</span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>cpd<span class="sc">$</span>text_body <span class="ot">&lt;-</span> <span class="fu">vapply</span>(cpd<span class="sc">$</span>text, clean_cpd_body,<span class="fu">character</span>(<span class="dv">1</span>))</span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">substr</span>(cpd<span class="sc">$</span>text_body[<span class="dv">1</span>], <span class="dv">1</span>, <span class="dv">500</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>President Trump. Thank you very much. It's a great honor.
+
+President Xi, Madame Peng, and the members of the Chinese delegation: I am delighted to welcome you to the beautiful White House. Such a great honor.
+
+In May, we had the great privilege of visiting you in Beijing, where you received our delegation with spectacular and very beautiful hospitality. Now Melania and I are honored to host you in Washington as President Xi becomes the first-ever Chinese leader to make a second formal state visi</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>cpd_body_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(cpd, <span class="at">text_field =</span> <span class="st">"text_body"</span>, <span class="at">docid_field =</span> <span class="st">"packageId"</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>xi_kwic_body <span class="ot">&lt;-</span> <span class="fu">kwic</span>(</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens</span>(cpd_body_corpus, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="fu">c</span>(<span class="st">"Xi Jinping"</span>, <span class="st">"President Xi"</span>)),</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">window =</span> <span class="dv">12</span>)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(xi_kwic_body, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Keyword-in-context with 15 matches.
+                          
+   [DCPD-202600636, 11:12]
+   [DCPD-202600636, 72:73]
+   [DCPD-202600636, 97:98]
+ [DCPD-202600636, 157:158]
+ [DCPD-202600636, 171:172]
+ [DCPD-202600636, 288:289]
+ [DCPD-202600636, 523:524]
+ [DCPD-202600636, 541:542]
+ [DCPD-202600636, 582:583]
+ [DCPD-202600636, 584:585]
+   [DCPD-202500663, 10:11]
+   [DCPD-202500663, 98:99]
+     [DCPD-202600342, 1:2]
+   [DCPD-202600342, 93:94]
+ [DCPD-202600342, 407:408]
+                                                                                                 
+                                           President Trump Thank you very much It's a great honor
+                                       Now Melania and I are honored to host you in Washington as
+                                      visit to America From the time of my first election in 2016
+                                   our first time meeting together here at the White House And as
+                                        has already seen a lot has changed since he was last here
+                           thing and we're very proud of it and the relationship Working together
+                              working together Just as our people worked together to win that war
+                                working together to forge a better future for both of our nations
+                   Announcer Ladies and gentlemen the President of the People's Republic of China
+                         and gentlemen the President of the People's Republic of China Xi Jinping
+                                                     I just concluded a very good phone call with
+ Lutnick and United States Trade Representative Ambassador Jamieson Greer During the conversation
+                                                                                                 
+                    hospitality extended to me in 2017 at Mar-a-Lago President Trump That's right
+                                  further discussions now with the group But I just want to thank
+                 
+ | President Xi |
+ | President Xi |
+ | President Xi |
+ | President Xi |
+ | President Xi |
+ | President Xi |
+ | President Xi |
+ | President Xi |
+ |  Xi Jinping  |
+ | President Xi |
+ | President Xi |
+ | President Xi |
+ | President Xi |
+ | President Xi |
+ | President Xi |
+                                                                                 
+ Madame Peng and the members of the Chinese delegation I am delighted            
+ becomes the first-ever Chinese leader to make a second formal state visit       
+ and I have forged a friendship—a truly great friendship actually—built on mutual
+ has already seen a lot has changed since he was last here                       
+ and Madame Peng arrive at an important moment for America the 250th             
+ and I have made tremendous strides on the issues facing our two                 
+ and I will continue working together to forge a better future for               
+ Madame Peng thank you once again for making this historic visit and             
+ President Xi Honorable President Donald J Trump and Mrs Melania Trump members   
+ Honorable President Donald J Trump and Mrs Melania Trump members of the         
+ of China discussing some of the intricacies of our recently made and            
+ graciously invited the First Lady and me to visit China and I                   
+ Well today I am hosting the President and his officials in the                  
+ While this place used to be part of the imperial garden there                   
+ and all of his representatives They're—we've become friendly with all of them   </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(xi_kwic_body)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 760</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>cpd<span class="sc">$</span>administration <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.Date</span>(cpd<span class="sc">$</span>publishdate) <span class="sc">&lt;</span> <span class="fu">as.Date</span>(<span class="st">"2025-01-20"</span>), <span class="st">"Biden"</span>,<span class="st">"Trump"</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(cpd<span class="sc">$</span>administration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Biden Trump 
+  183   169 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>cpd_body_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(cpd,<span class="at">text_field =</span> <span class="st">"text_body"</span>, <span class="at">docid_field =</span> <span class="st">"packageId"</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>cpd_toks <span class="ot">&lt;-</span> <span class="fu">tokens</span>(</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  cpd_body_corpus,</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_url =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_tolower</span>() <span class="sc">|&gt;</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_remove</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>))</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>cpd_dfm <span class="ot">&lt;-</span> <span class="fu">dfm</span>(cpd_toks)</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>cpd_grouped <span class="ot">&lt;-</span> <span class="fu">dfm_group</span>(cpd_dfm,<span class="at">groups =</span> cpd<span class="sc">$</span>administration)</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>cpd_grouped</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dfm of 2 documents x 51,257 features (1,073,677 occurrences, 37.67% sparsity)
+and 10 docvars.
+       features
+docs    president trump thank much great honor  xi madame peng members
+  Biden     11965   194  1651  747   410   170 296      1    0     752
+  Trump     16356  3342  3780 2644  3886   389 439      8   16     201
+[ reached max_nfeat ... 51,247 more features ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>keyness_results <span class="ot">&lt;-</span> <span class="fu">textstat_keyness</span>( cpd_grouped, <span class="at">target =</span> <span class="st">"Biden"</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(keyness_results, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      feature      chi2 p n_target n_reference
+1       press 2670.6187 0     3143         301
+2   announced 2118.2629 0     3019         487
+3       house 1616.5658 0     3182         850
+4    briefing 1570.3102 0     1631          84
+5       white 1452.6518 0     2795         726
+6    national 1426.9750 0     2611         636
+7   intention 1348.1876 0     1253          15
+8  transcript 1262.8689 0     1219          31
+9    security 1223.5540 0     2438         660
+10   nominate 1108.6270 0     1016           7
+11      sheet  997.9652 0     1173         111
+12      icymi  903.8589 0      851          14
+13   traveled  891.7990 0     1330         234
+14    adviser  848.1132 0     1139         160
+15     travel  777.1456 0      994         123</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(keyness_results, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      feature      chi2 p n_target n_reference
+51243     lot -1089.037 0      875        3185
+51244 tariffs -1097.118 0       21        1284
+51245 country -1113.972 0      902        3271
+51246    like -1306.095 0      992        3709
+51247   right -1372.362 0      658        3131
+51248    good -1443.696 0      602        3103
+51249  people -1472.129 0     1958        5704
+51250   think -1573.760 0     1634        5283
+51251    want -1647.505 0      953        4091
+51252   going -1659.771 0     3269        8210
+51253    know -1758.610 0     2521        7124
+51254     yes -1901.616 0      339        3048
+51255   great -2474.509 0      410        3886
+51256   trump -2495.436 0      194        3342
+51257       q -4054.870 0      837        6761</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_keyness</span>(keyness_results, <span class="at">n =</span> <span class="dv">15</span>, <span class="at">min_count =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assign06_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Keyness analysis showed differences between the two administrations. Biden-era documents featured more words related to official announcements and briefings, while Trump-era documents emphasized terms such as “tariffs” and more conversational expressions. However, these differences may partly reflect the types of documents collected rather than policy differences alone.</p>
+<section id="iii.compare-what-does-each-source-let-you-say-about-the-summit-and-about-uschina-relations" class="level3">
+<h3 class="anchored" data-anchor-id="iii.compare-what-does-each-source-let-you-say-about-the-summit-and-about-uschina-relations">iii.Compare: what does each source let you say about the summit, and about US–China relations?</h3>
+<p>Tweets reflect public discussions of the summit, including issues such as human rights and international tensions. They were produced by social media users and news accounts for online audiences. In contrast, presidential documents record official statements and remarks intended for the public and the press. While tweets show how the summit was discussed online, government documents provide insight into official US–China relations. However, neither source fully represents public opinion or diplomatic relations.</p>
+</section>
+</section>
+<section id="part3.-us-presidential-inaugural-addresses" class="level2">
+<h2 class="anchored" data-anchor-id="part3.-us-presidential-inaugural-addresses">Part3. US presidential inaugural addresses</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"data_corpus_inaugural"</span>, <span class="at">package =</span> <span class="st">"quanteda"</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>inaugural <span class="ot">&lt;-</span> data_corpus_inaugural</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(inaugural, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>corpus of 60 documents, showing 5 documents:
+
+            Text Types Tokens Sentences Year  President FirstName
+ 1789-Washington   625   1537        24 1789 Washington    George
+ 1793-Washington    96    147         5 1793 Washington    George
+      1797-Adams   826   2577        37 1797      Adams      John
+  1801-Jefferson   717   1923        43 1801  Jefferson    Thomas
+  1805-Jefferson   804   2380        45 1805  Jefferson    Thomas
+                 Party
+                  none
+                  none
+            Federalist
+ Democratic-Republican
+ Democratic-Republican</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>inaugural_1945 <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(inaugural, Year <span class="sc">&gt;=</span> <span class="dv">1945</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ndoc</span>(inaugural_1945)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">docvars</span>(inaugural))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Year"      "President" "FirstName" "Party"    </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">docvars</span>(inaugural), <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Year President FirstName      Party
+51 1989      Bush    George Republican
+52 1993   Clinton      Bill Democratic
+53 1997   Clinton      Bill Democratic
+54 2001      Bush George W. Republican
+55 2005      Bush George W. Republican
+56 2009     Obama    Barack Democratic
+57 2013     Obama    Barack Democratic
+58 2017     Trump Donald J. Republican
+59 2021     Biden Joseph R. Democratic
+60 2025     Trump Donald J. Republican</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(<span class="fu">docvars</span>(inaugural, <span class="st">"Year"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2025</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>inaugural_tokens <span class="ot">&lt;-</span> <span class="fu">tokens</span>(inaugural_1945, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>speech_length <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Year =</span> <span class="fu">docvars</span>(inaugural_1945, <span class="st">"Year"</span>),</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">President =</span> <span class="fu">docvars</span>(inaugural_1945,<span class="st">"President"</span>),</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Party =</span> <span class="fu">docvars</span>(inaugural_1945, <span class="st">"Party"</span>),</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Length =</span> <span class="fu">ntoken</span>(inaugural_tokens))</span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>speech_length</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                Year  President      Party Length
+1945-Roosevelt  1945  Roosevelt Democratic    557
+1949-Truman     1949     Truman Democratic   2272
+1953-Eisenhower 1953 Eisenhower Republican   2454
+1957-Eisenhower 1957 Eisenhower Republican   1659
+1961-Kennedy    1961    Kennedy Democratic   1366
+1965-Johnson    1965    Johnson Democratic   1489
+1969-Nixon      1969      Nixon Republican   2124
+1973-Nixon      1973      Nixon Republican   1802
+1977-Carter     1977     Carter Democratic   1224
+1981-Reagan     1981     Reagan Republican   2432
+1985-Reagan     1985     Reagan Republican   2564
+1989-Bush       1989       Bush Republican   2317
+1993-Clinton    1993    Clinton Democratic   1598
+1997-Clinton    1997    Clinton Democratic   2157
+2001-Bush       2001       Bush Republican   1584
+2005-Bush       2005       Bush Republican   2071
+2009-Obama      2009      Obama Democratic   2390
+2013-Obama      2013      Obama Democratic   2097
+2017-Trump      2017      Trump Republican   1445
+2021-Biden      2021      Biden Democratic   2372
+2025-Trump      2025      Trump Republican   2913</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(speech_length, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Length)) <span class="sc">+</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Length of US Presidential Inaugural Addresses (1945–2025)"</span>,</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Number of Tokens"</span>) <span class="sc">+</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assign06_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The length of inaugural addresses varied considerably over time, without a clear long-term trend. Roosevelt’s 1945 address was the shortest (557 tokens), while Trump’s 2025 address was the longest (2,913 tokens).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>lexdiv <span class="ot">&lt;-</span> <span class="fu">textstat_lexdiv</span>(<span class="fu">tokens_tolower</span>(inaugural_tokens), <span class="at">measure =</span> <span class="fu">c</span>(<span class="st">"TTR"</span>, <span class="st">"MATTR"</span>), <span class="at">MATTR_window =</span> <span class="dv">100</span>)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>lexdiv<span class="sc">$</span>Year <span class="ot">&lt;-</span> <span class="fu">docvars</span>(inaugural_1945, <span class="st">"Year"</span>)</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>lexdiv<span class="sc">$</span>President <span class="ot">&lt;-</span> <span class="fu">docvars</span>(inaugural_1945, <span class="st">"President"</span>)</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>lexdiv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          document       TTR     MATTR Year  President
+1   1945-Roosevelt 0.4630631 0.6538377 1945  Roosevelt
+2      1949-Truman 0.3262880 0.6768785 1949     Truman
+3  1953-Eisenhower 0.3468303 0.6813257 1953 Eisenhower
+4  1957-Eisenhower 0.3532248 0.6751923 1957 Eisenhower
+5     1961-Kennedy 0.3907625 0.6809565 1961    Kennedy
+6     1965-Johnson 0.3539704 0.6713122 1965    Johnson
+7       1969-Nixon 0.3333333 0.6676346 1969      Nixon
+8       1973-Nixon 0.2815103 0.6396651 1973      Nixon
+9      1977-Carter 0.4013104 0.7016934 1977     Carter
+10     1981-Reagan 0.3463595 0.6901072 1981     Reagan
+11     1985-Reagan 0.3356835 0.7107213 1985     Reagan
+12       1989-Bush 0.3231102 0.6742509 1989       Bush
+13    1993-Clinton 0.3754693 0.6947298 1993    Clinton
+14    1997-Clinton 0.3333333 0.6822400 1997    Clinton
+15       2001-Bush 0.3689198 0.6885984 2001       Bush
+16       2005-Bush 0.3500724 0.6781998 2005       Bush
+17      2009-Obama 0.3736402 0.7070275 2009      Obama
+18      2013-Obama 0.3709369 0.7029654 2013      Obama
+19      2017-Trump 0.3728344 0.6670238 2017      Trump
+20      2021-Biden 0.3081150 0.6816012 2021      Biden
+21      2025-Trump 0.3231351 0.6985267 2025      Trump</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lexdiv, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> MATTR)) <span class="sc">+</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Lexical Diversity of Inaugural Addresses (1945–2025)"</span>,<span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"MATTR"</span>) <span class="sc">+</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assign06_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lexical diversity varied across inaugural addresses without a clear long-term trend. Reagan’s 1985 address had the highest MATTR (0.711), while Nixon’s 1973 address had the lowest (0.640).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>readability <span class="ot">&lt;-</span> <span class="fu">textstat_readability</span>(</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  inaugural_1945, <span class="at">measure =</span> <span class="fu">c</span>(<span class="st">"Flesch"</span>, <span class="st">"Flesch.Kincaid"</span>))</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>readability<span class="sc">$</span>Year <span class="ot">&lt;-</span> <span class="fu">docvars</span>(inaugural_1945, <span class="st">"Year"</span>)</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>readability<span class="sc">$</span>President <span class="ot">&lt;-</span> <span class="fu">docvars</span>(inaugural_1945, <span class="st">"President"</span>)</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>readability</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          document   Flesch Flesch.Kincaid Year  President
+1   1945-Roosevelt 68.37960       8.865124 1945  Roosevelt
+2      1949-Truman 48.79392      11.338590 1949     Truman
+3  1953-Eisenhower 57.69623      10.343254 1953 Eisenhower
+4  1957-Eisenhower 69.16352       8.094908 1957 Eisenhower
+5     1961-Kennedy 57.12017      11.822997 1961    Kennedy
+6     1965-Johnson 69.40780       7.558521 1965    Johnson
+7       1969-Nixon 65.57635       9.235663 1969      Nixon
+8       1973-Nixon 54.18790      12.295502 1973      Nixon
+9      1977-Carter 53.38224      11.670742 1977     Carter
+10     1981-Reagan 58.75374       9.755604 1981     Reagan
+11     1985-Reagan 57.58379      10.420294 1985     Reagan
+12       1989-Bush 73.10287       7.147029 1989       Bush
+13    1993-Clinton 55.81424      10.381579 1993    Clinton
+14    1997-Clinton 59.22186       9.828863 1997    Clinton
+15       2001-Bush 60.12048       8.933091 2001       Bush
+16       2005-Bush 53.19251      11.041969 2005       Bush
+17      2009-Obama 60.53179      10.234345 2009      Obama
+18      2013-Obama 53.55532      11.734767 2013      Obama
+19      2017-Trump 58.57621       9.171244 2017      Trump
+20      2021-Biden 73.19639       5.783758 2021      Biden
+21      2025-Trump 55.08395       9.671774 2025      Trump</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(readability, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Flesch)) <span class="sc">+</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Readability of Inaugural Addresses (1945–2025)"</span>, <span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Flesch Reading Ease"</span>) <span class="sc">+</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assign06_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Readability varied across presidential inaugural addresses without a clear long-term trend. Biden’s 2021 address had the highest Flesch Reading Ease score (73.2), while Truman’s 1949 address had the lowest (48.8).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>inaugural_dfm <span class="ot">&lt;-</span> inaugural_1945 <span class="sc">|&gt;</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>, <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_tolower</span>() <span class="sc">|&gt;</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_remove</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>cos_sim <span class="ot">&lt;-</span> <span class="fu">textstat_simil</span>(inaugural_dfm, <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">margin =</span> <span class="st">"documents"</span>)</span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>sim_matrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(cos_sim)</span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(sim_matrix, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                1945-Roosevelt 1949-Truman 1953-Eisenhower 1957-Eisenhower
+1945-Roosevelt           1.000       0.354           0.398           0.357
+1949-Truman              0.354       1.000           0.561           0.590
+1953-Eisenhower          0.398       0.561           1.000           0.570
+1957-Eisenhower          0.357       0.590           0.570           1.000
+1961-Kennedy             0.302       0.417           0.437           0.407
+1965-Johnson             0.288       0.387           0.409           0.422
+1969-Nixon               0.366       0.464           0.467           0.455
+1973-Nixon               0.336       0.431           0.436           0.410
+1977-Carter              0.249       0.434           0.422           0.418
+1981-Reagan              0.277       0.412           0.461           0.390
+1985-Reagan              0.326       0.479           0.485           0.449
+1989-Bush                0.331       0.445           0.491           0.451
+1993-Clinton             0.290       0.408           0.415           0.425
+1997-Clinton             0.256       0.369           0.410           0.371
+2001-Bush                0.269       0.340           0.428           0.360
+2005-Bush                0.267       0.448           0.475           0.458
+2009-Obama               0.314       0.412           0.469           0.453
+2013-Obama               0.320       0.434           0.478           0.418
+2017-Trump               0.212       0.315           0.323           0.333
+2021-Biden               0.353       0.361           0.440           0.393
+2025-Trump               0.210       0.311           0.313           0.304
+                1961-Kennedy 1965-Johnson 1969-Nixon 1973-Nixon 1977-Carter
+1945-Roosevelt         0.302        0.288      0.366      0.336       0.249
+1949-Truman            0.417        0.387      0.464      0.431       0.434
+1953-Eisenhower        0.437        0.409      0.467      0.436       0.422
+1957-Eisenhower        0.407        0.422      0.455      0.410       0.418
+1961-Kennedy           1.000        0.386      0.528      0.552       0.432
+1965-Johnson           0.386        1.000      0.483      0.426       0.470
+1969-Nixon             0.528        0.483      1.000      0.631       0.528
+1973-Nixon             0.552        0.426      0.631      1.000       0.522
+1977-Carter            0.432        0.470      0.528      0.522       1.000
+1981-Reagan            0.471        0.490      0.543      0.535       0.494
+1985-Reagan            0.484        0.548      0.614      0.610       0.526
+1989-Bush              0.466        0.485      0.550      0.526       0.516
+1993-Clinton           0.456        0.533      0.516      0.560       0.486
+1997-Clinton           0.481        0.559      0.562      0.630       0.544
+2001-Bush              0.412        0.434      0.429      0.450       0.442
+2005-Bush              0.389        0.430      0.386      0.381       0.412
+2009-Obama             0.509        0.540      0.579      0.587       0.532
+2013-Obama             0.429        0.547      0.521      0.521       0.522
+2017-Trump             0.324        0.400      0.420      0.402       0.363
+2021-Biden             0.456        0.526      0.586      0.567       0.506
+2025-Trump             0.308        0.376      0.378      0.380       0.397
+                1981-Reagan 1985-Reagan 1989-Bush 1993-Clinton 1997-Clinton
+1945-Roosevelt        0.277       0.326     0.331        0.290        0.256
+1949-Truman           0.412       0.479     0.445        0.408        0.369
+1953-Eisenhower       0.461       0.485     0.491        0.415        0.410
+1957-Eisenhower       0.390       0.449     0.451        0.425        0.371
+1961-Kennedy          0.471       0.484     0.466        0.456        0.481
+1965-Johnson          0.490       0.548     0.485        0.533        0.559
+1969-Nixon            0.543       0.614     0.550        0.516        0.562
+1973-Nixon            0.535       0.610     0.526        0.560        0.630
+1977-Carter           0.494       0.526     0.516        0.486        0.544
+1981-Reagan           1.000       0.690     0.535        0.559        0.562
+1985-Reagan           0.690       1.000     0.558        0.594        0.642
+1989-Bush             0.535       0.558     1.000        0.547        0.573
+1993-Clinton          0.559       0.594     0.547        1.000        0.626
+1997-Clinton          0.562       0.642     0.573        0.626        1.000
+2001-Bush             0.497       0.496     0.499        0.478        0.544
+2005-Bush             0.458       0.512     0.456        0.440        0.436
+2009-Obama            0.577       0.590     0.572        0.593        0.630
+2013-Obama            0.606       0.634     0.529        0.600        0.613
+2017-Trump            0.424       0.474     0.454        0.498        0.495
+2021-Biden            0.579       0.615     0.583        0.593        0.590
+2025-Trump            0.431       0.456     0.452        0.434        0.433
+                2001-Bush 2005-Bush 2009-Obama 2013-Obama 2017-Trump 2021-Biden
+1945-Roosevelt      0.269     0.267      0.314      0.320      0.212      0.353
+1949-Truman         0.340     0.448      0.412      0.434      0.315      0.361
+1953-Eisenhower     0.428     0.475      0.469      0.478      0.323      0.440
+1957-Eisenhower     0.360     0.458      0.453      0.418      0.333      0.393
+1961-Kennedy        0.412     0.389      0.509      0.429      0.324      0.456
+1965-Johnson        0.434     0.430      0.540      0.547      0.400      0.526
+1969-Nixon          0.429     0.386      0.579      0.521      0.420      0.586
+1973-Nixon          0.450     0.381      0.587      0.521      0.402      0.567
+1977-Carter         0.442     0.412      0.532      0.522      0.363      0.506
+1981-Reagan         0.497     0.458      0.577      0.606      0.424      0.579
+1985-Reagan         0.496     0.512      0.590      0.634      0.474      0.615
+1989-Bush           0.499     0.456      0.572      0.529      0.454      0.583
+1993-Clinton        0.478     0.440      0.593      0.600      0.498      0.593
+1997-Clinton        0.544     0.436      0.630      0.613      0.495      0.590
+2001-Bush           1.000     0.521      0.541      0.557      0.452      0.562
+2005-Bush           0.521     1.000      0.458      0.517      0.435      0.480
+2009-Obama          0.541     0.458      1.000      0.638      0.448      0.616
+2013-Obama          0.557     0.517      0.638      1.000      0.455      0.607
+2017-Trump          0.452     0.435      0.448      0.455      1.000      0.514
+2021-Biden          0.562     0.480      0.616      0.607      0.514      1.000
+2025-Trump          0.466     0.442      0.427      0.419      0.632      0.480
+                2025-Trump
+1945-Roosevelt       0.210
+1949-Truman          0.311
+1953-Eisenhower      0.313
+1957-Eisenhower      0.304
+1961-Kennedy         0.308
+1965-Johnson         0.376
+1969-Nixon           0.378
+1973-Nixon           0.380
+1977-Carter          0.397
+1981-Reagan          0.431
+1985-Reagan          0.456
+1989-Bush            0.452
+1993-Clinton         0.434
+1997-Clinton         0.433
+2001-Bush            0.466
+2005-Bush            0.442
+2009-Obama           0.427
+2013-Obama           0.419
+2017-Trump           0.632
+2021-Biden           0.480
+2025-Trump           1.000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>sim_matrix[<span class="fu">lower.tri</span>(sim_matrix, <span class="at">diag =</span> <span class="cn">TRUE</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(sim_matrix <span class="sc">==</span> <span class="fu">max</span>(sim_matrix, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">arr.ind =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            row col
+1981-Reagan  10  11</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert similarity matrix to data frame</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>sim_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">as.table</span>(<span class="fu">as.matrix</span>(cos_sim)))</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sim_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Speech1"</span>, <span class="st">"Speech2"</span>, <span class="st">"Similarity"</span>)</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Heatmap</span></span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_df, <span class="fu">aes</span>(<span class="at">x =</span> Speech1, <span class="at">y =</span> Speech2, <span class="at">fill =</span> Similarity)) <span class="sc">+</span></span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cosine Similarity of Inaugural Addresses (1945–2025)"</span>,<span class="at">x =</span> <span class="st">"Speech"</span>, <span class="at">y =</span> <span class="st">"Speech"</span>) <span class="sc">+</span></span>
+<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assign06_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Cosine similarity showed varying degrees of similarity among inaugural addresses. Reagan’s 1981 and 1985 speeches were the most similar, suggesting consistency in word usage across his two addresses.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>party_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_group</span>(inaugural_dfm,  <span class="at">groups =</span> <span class="fu">docvars</span>(inaugural_1945, <span class="st">"Party"</span>))</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>party_dfm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dfm of 2 documents x 4,601 features (20,073 occurrences, 32.30% sparsity) and 1
+docvar.
+            features
+docs         chief justice mr vice president friends understand believe agree
+  Democratic     5      23  6    8        22       8          7      24     3
+  Republican    10      26 19   12        40      19          4      21     2
+            features
+docs         wish
+  Democratic    2
+  Republican    4
+[ reached max_nfeat ... 4,591 more features ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate keyness</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>party_keyness <span class="ot">&lt;-</span> <span class="fu">textstat_keyness</span>( party_dfm, <span class="at">target =</span> <span class="st">"Democratic"</span>)</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(party_keyness, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      feature      chi2            p n_target n_reference
+1   democracy 20.516200 5.912871e-06       32           9
+2      change 15.194647 9.697794e-05       30          11
+3        must 13.715945 2.126415e-04       93          69
+4       forth  9.697303 1.845387e-03        9           0
+5     journey  9.412386 2.155246e-03       16           5
+6  generation  9.204902 2.413679e-03       20           8
+7      enough  9.163013 2.469556e-03       11           2
+8       still  8.895073 2.859412e-03       21           9
+9         new  8.885829 2.873926e-03       87          72
+10     fellow  8.082754 4.468849e-03       32          19
+11         us  7.989535 4.704849e-03      149         142
+12  resources  7.943951 4.824839e-03       10           2
+13       land  7.189682 7.332397e-03       24          13
+14        can  7.032923 8.002461e-03       96          86
+15    learned  6.084807 1.363493e-02       10           3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(party_keyness, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        feature      chi2           p n_target n_reference
+4587      think -5.117918 0.023680013        3          15
+4588 compassion -5.164955 0.023047058        0           9
+4589      bring -5.309916 0.021204383        7          24
+4590      speak -5.409524 0.020027181        2          13
+4591       back -5.865770 0.015438105        7          25
+4592      great -6.006559 0.014252794       28          64
+4593    senator -6.658024 0.009871029        0          11
+4594     system -6.795616 0.009138201        2          15
+4595    country -8.844351 0.002939974       22          60
+4596    freedom -8.892674 0.002863171       37          87
+4597      thank -9.188888 0.002434887        9          35
+4598 government -9.583218 0.001963639       26          69
+4599    federal -9.836554 0.001710777        0          13
+4600      going -9.836554 0.001710777        0          13
+4601       seen -9.836554 0.001710777        0          13</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_keyness</span>(party_keyness, <span class="at">n =</span> <span class="dv">15</span>, <span class="at">min_count =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assign06_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Keyness analysis showed differences in word usage between parties. Democratic addresses featured words such as “democracy,” “change,” and “generation,” while Republican addresses emphasized “freedom,” “government,” and “country.” These differences may also reflect individual presidents and historical contexts.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>wf <span class="ot">&lt;-</span> <span class="fu">textmodel_wordfish</span>(inaugural_dfm, <span class="at">dir =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">21</span>))</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+textmodel_wordfish.dfm(x = inaugural_dfm, dir = c(1, 21))
+
+Estimated Document Positions:
+                   theta      se
+1945-Roosevelt  -0.75758 0.09393
+1949-Truman     -1.72185 0.03021
+1953-Eisenhower -1.60911 0.03068
+1957-Eisenhower -1.28667 0.04314
+1961-Kennedy    -0.94113 0.05355
+1965-Johnson    -0.43525 0.06218
+1969-Nixon      -0.07414 0.05362
+1973-Nixon      -0.03135 0.05908
+1977-Carter     -0.69414 0.06299
+1981-Reagan     -0.57097 0.04685
+1985-Reagan      0.10154 0.04819
+1989-Bush        1.02408 0.04312
+1993-Clinton     0.87471 0.05360
+1997-Clinton     0.85829 0.04533
+2001-Bush        0.44119 0.06042
+2005-Bush       -0.53783 0.04955
+2009-Obama       0.47669 0.04913
+2013-Obama       0.48784 0.05230
+2017-Trump       1.42888 0.04301
+2021-Biden       1.05069 0.04193
+2025-Trump       1.91610 0.02300
+
+Estimated Feature Scores:
+       chief justice       mr    vice president friends understand believe
+beta -0.0837 -0.4402 -0.60577 -0.1568    0.3578 -0.2219     0.2093 -0.6777
+psi  -0.4078  0.7746  0.06644 -0.1122    0.8770  0.1915    -0.7910  0.6321
+       agree    wish     form inauguration   simple    words  brief americans
+beta -0.6043 -0.7421  0.07931      -0.3191 -0.05927 -0.02723 -1.072    0.2653
+psi  -1.5426 -1.4062 -1.20257      -1.1595 -0.48039  0.20736 -3.367    1.2087
+      today together  allies   passing period supreme   test courage resolve
+beta 0.2965   0.0722 -0.7292  0.003916 -1.099  -1.197 -1.426 0.04239 -0.2104
+psi  1.3204   1.1709 -1.1135 -1.744565 -1.439  -1.843 -2.026 0.07957 -0.1090
+      wisdom essential democracy    meet successfully
+beta -0.8616    -1.447  -0.05184 -0.2644       -1.072
+psi  -0.8519    -2.267   0.59295  0.2283       -3.367</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_scale1d</span>(wf, <span class="at">groups =</span> <span class="fu">docvars</span>(inaugural_1945, <span class="st">"Party"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assign06_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>wf_words <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">word =</span> wf<span class="sc">$</span>features, <span class="at">beta =</span> <span class="fu">as.numeric</span>(wf<span class="sc">$</span>beta))</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wf_words[<span class="fu">order</span>(wf_words<span class="sc">$</span>beta), ], <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           word      beta
+736       aided -4.762844
+241       major -4.412359
+322  philosophy -4.412359
+373 established -4.008311
+607  scientific -4.008311
+633 development -4.008311
+641   technical -4.008311
+464       basis -3.706348
+552       joint -3.706348
+616  conditions -3.706348</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wf_words[<span class="fu">order</span>(<span class="sc">-</span>wf_words<span class="sc">$</span>beta), ], <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           word     beta
+4533     panama 4.463547
+4354     entire 3.942227
+4372  emergency 3.942227
+4375   applause 3.942227
+4386    that’s 3.942227
+4393    mandate 3.942227
+4398 america’s 3.942227
+4452     prices 3.942227
+4530   mckinley 3.942227
+4577 impossible 3.942227</code></pre>
+</div>
+</div>
+<p>Wordfish assumes that word frequencies follow a Poisson distribution, with document positions estimated along a single latent dimension. The results appear to reflect changes in language over time rather than a clear partisan division. However, examining distinguishing words and comparing the estimates with external evidence would be necessary to validate this interpretation. The <code>dir</code> parameter fixes the direction of the dimension, since its sign is otherwise arbitrary.</p>
+<section id="cpd-data-note" class="level3">
+<h3 class="anchored" data-anchor-id="cpd-data-note">CPD Data Note</h3>
+<p>The documents were collected from GovInfo’s Compilation of Presidential Documents using the keyword “Xi Jinping” from January 20, 2021, to November 1, 2026. The search returned 352 documents. Only the collection log and metadata manifest are published, not the full documents or API key.</p>
+<ul>
+<li><a href="cpd_log6.csv">CPD Collection Log</a></li>
+<li><a href="cpd_manifest6.csv">CPD Manifest</a></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
