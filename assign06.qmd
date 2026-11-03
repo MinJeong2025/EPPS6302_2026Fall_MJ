@@ -418,5 +418,5 @@ January 20, 2021, to November 1, 2026. The search returned
 352 documents. Only the collection log and metadata manifest
 are published, not the full documents or API key.
 
-- [CPD Collection Log]('cpd_log6.csv')
-- [CPD Manifest]('cpd_manifest6.csv')
+- [CPD Collection Log](cpd_log6.csv)
+- [CPD Manifest](cpd_manifest6.csv)
